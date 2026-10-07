@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdul Momin Alam</title>
+<meta name="description" content="Abdul Momin Alam — Computer Science & Engineering student at Sabancı University building AI systems, backends and machine-learning projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a datasheet grid for work — meta on the left, substance on the right, hairlines between entries. */
+:root {
+  --bg: #F3F5F9;
+  --surface: #FFFFFF;
+  --fg: #131A2E;
+  --muted: #586179;
+  --line: #D8DDE8;
+  --accent: #2443C4;      /* Iznik cobalt */
+  --accent-2: #0A7A74;    /* turquoise, used for measured figures */
+  --accent-soft: #E3E8FA;
+  --bar-track: #E4E8F0;
+
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: clamp(1.75rem, 1.3rem + 1.8vw, 2.375rem);
+  --step-5: clamp(2.75rem, 1.4rem + 6vw, 5.5rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1120; --surface: #151B2E; --fg: #E5E9F3; --muted: #9AA3BA; --line: #273049;
+    --accent: #93A8FF; --accent-2: #5CCFC5; --accent-soft: #1D2647; --bar-track: #222A42;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1120; --surface: #151B2E; --fg: #E5E9F3; --muted: #9AA3BA; --line: #273049;
+  --accent: #93A8FF; --accent-2: #5CCFC5; --accent-soft: #1D2647; --bar-track: #222A42;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 68rem; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+/* Top bar */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-family: var(--f-display); font-stretch: 125%; font-weight: 800; letter-spacing: -0.01em; color: var(--fg); text-decoration: none; font-size: 1rem; }
+.top nav { display: flex; gap: clamp(12px, 2.5vw, 28px); flex-wrap: wrap; }
+.top nav a { color: var(--muted); text-decoration: none; font-size: var(--step--1); font-weight: 500; }
+.top nav a:hover { color: var(--fg); }
+@media (max-width: 560px) { .top nav a.opt { display: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(48px, 9vw, 104px) clamp(36px, 6vw, 64px); }
+.eyebrow {
+  font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: 0.04em;
+  color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 22px;
+}
+.eyebrow span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent-2); margin-right: 8px; vertical-align: 2px; }
+h1 {
+  font-family: var(--f-display); font-stretch: 125%; font-weight: 800;
+  font-size: var(--step-5); line-height: 0.95; letter-spacing: -0.035em;
+  margin: 0 0 28px; text-wrap: balance;
+}
+h1 .soft { color: var(--accent); }
+.lede { font-size: var(--step-1); max-width: 40rem; margin: 0 0 32px; color: var(--fg); }
+.lede em { font-style: normal; color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-body); font-weight: 600; font-size: 0.9375rem;
+  padding: 10px 18px; border-radius: 6px; text-decoration: none; border: 1px solid var(--line);
+  color: var(--fg); background: var(--surface); cursor: pointer;
+}
+.btn:hover { border-color: var(--fg); text-decoration: none; }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+.btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* Readout strip: measured figures from the work */
+.readout {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--fg); border-bottom: 1px solid var(--line);
+  margin-top: clamp(40px, 7vw, 72px);
+}
+.readout div { padding: 18px 18px 18px 0; display: grid; gap: 4px; align-content: start; }
+.readout div + div { padding-left: 18px; border-left: 1px solid var(--line); }
+.readout b { font-family: var(--f-display); font-stretch: 112%; font-weight: 700; font-size: var(--step-3); line-height: 1; color: var(--accent-2); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.readout span { font-size: var(--step--1); color: var(--muted); line-height: 1.4; }
+@media (max-width: 760px) {
+  .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .readout div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .readout div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* Sections */
+section { padding-block: clamp(48px, 8vw, 88px) 0; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+h2 {
+  font-family: var(--f-display); font-stretch: 125%; font-weight: 800;
+  font-size: var(--step-3); letter-spacing: -0.025em; line-height: 1.05; margin: 0; text-wrap: balance;
+}
+.sec-note { color: var(--muted); font-size: var(--step--1); margin: 0; }
+
+/* Datasheet entries */
+.entry {
+  display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 12px 40px;
+  padding-block: 32px; border-top: 1px solid var(--line);
+}
+.entry:first-of-type { border-top-color: var(--fg); }
+.meta { display: grid; gap: 10px; align-content: start; font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); }
+.meta .when { color: var(--fg); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: var(--f-mono); font-size: 0.75rem; padding: 2px 8px; border-radius: 3px; background: var(--accent-soft); color: var(--fg); white-space: nowrap; }
+.body { min-width: 0; }
+h3 { font-family: var(--f-display); font-stretch: 112%; font-weight: 700; font-size: var(--step-2); letter-spacing: -0.015em; line-height: 1.2; margin: 0 0 4px; text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 14px; }
+.body ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 44rem; }
+.body li::marker { color: var(--accent); }
+.links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 16px; font-size: 0.9375rem; font-weight: 500; }
+.links a::after { content: " ↗"; }
+@media (max-width: 760px) { .entry { grid-template-columns: minmax(0, 1fr); gap: 14px; } }
+
+/* Eval panel for the command-center entry */
+.eval {
+  margin-top: 20px; max-width: 44rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px;
+}
+.eval-title { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.metric { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 6.5rem; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.875rem; }
+.metric:last-of-type { margin-bottom: 0; }
+.track { position: relative; height: 10px; background: var(--bar-track); border-radius: 2px; }
+.track i { position: absolute; inset: 0 auto 0 0; border-radius: 2px; }
+.track .before { background: var(--muted); opacity: 0.45; }
+.track .after { background: var(--accent-2); height: 4px; top: 3px; }
+.metric .val { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.metric .val b { color: var(--accent-2); font-weight: 500; }
+.legend { display: flex; gap: 18px; margin-top: 14px; font-size: 0.75rem; color: var(--muted); font-family: var(--f-mono); }
+.legend span::before { content: ""; display: inline-block; width: 14px; height: 6px; margin-right: 6px; vertical-align: 1px; border-radius: 1px; }
+.legend .l1::before { background: var(--muted); opacity: 0.45; }
+.legend .l2::before { background: var(--accent-2); }
+@media (max-width: 480px) { .metric { grid-template-columns: minmax(0, 1fr) auto; } .metric .track { grid-column: 1 / -1; grid-row: 2; } }
+
+/* Smaller repos */
+.mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.mini a {
+  display: grid; gap: 8px; align-content: start; padding: 18px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); color: var(--fg); text-decoration: none; min-width: 0;
+}
+.mini a:hover { border-color: var(--accent); }
+.mini strong { font-family: var(--f-mono); font-weight: 500; font-size: 0.875rem; overflow-wrap: anywhere; color: var(--accent); }
+.mini p { margin: 0; font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+.mini .lang { font-family: var(--f-mono); font-size: 0.75rem; color: var(--fg); }
+@media (max-width: 860px) { .mini { grid-template-columns: minmax(0, 1fr); } }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin-top: 8px; }
+.skills div { padding-block: 18px; border-top: 1px solid var(--line); min-width: 0; }
+.skills h4 { margin: 0 0 10px; font-family: var(--f-mono); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 760px) { .skills { grid-template-columns: minmax(0, 1fr); } }
+
+/* Two-up: education + beyond */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.pair > div { min-width: 0; }
+.plain { border-top: 1px solid var(--fg); padding-top: 20px; margin-top: 16px; display: grid; gap: 20px; }
+.plain h3 { font-size: var(--step-1); }
+.plain p { margin: 0; color: var(--muted); }
+.plain .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.plain .row span { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); }
+@media (max-width: 760px) { .pair { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+
+/* Contact */
+.contact { margin-top: clamp(56px, 9vw, 104px); background: var(--fg); color: var(--bg); }
+.contact .wrap { padding-block: clamp(40px, 7vw, 72px); display: grid; gap: 24px; }
+.contact h2 { color: var(--bg); font-size: clamp(2rem, 1.2rem + 3.6vw, 3.5rem); }
+.contact p { margin: 0; max-width: 36rem; opacity: 0.8; }
+.contact .cta .btn { background: transparent; color: var(--bg); border-color: color-mix(in srgb, var(--bg) 35%, transparent); }
+.contact .cta .btn:hover { border-color: var(--bg); }
+.contact .cta .btn.primary { background: var(--bg); color: var(--fg); border-color: var(--bg); }
+.email { font-family: var(--f-mono); font-size: var(--step-1); user-select: all; overflow-wrap: anywhere; }
+footer { background: var(--fg); color: var(--bg); }
+footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: var(--step--1); opacity: 0.7; font-family: var(--f-mono); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">AMA</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a class="opt" href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <p class="eyebrow"><span>CS &amp; Engineering, Sabancı University</span><span>Minor in Business Analytics</span><span>Istanbul, Türkiye</span></p>
+      <h1>Abdul Momin <span class="soft">Alam</span></h1>
+      <p class="lede">I build AI software and the backends behind it: LLM pipelines with evaluation sets, cost limits and read-only guardrails, agents that talk to real databases, and machine-learning models I can test against real data. <em>Class of 2027.</em></p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/AbdulMominAlam" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/abdulmominalam" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.542v7.22H4.94zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.01-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.21V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="readout" aria-label="Measured results from my projects">
+        <div><b>82→93%</b><span>task-extraction accuracy after four prompt iterations</span></div>
+        <div><b>$0.004</b><span>LLM cost per email across ~800 processed</span></div>
+        <div><b>223</b><span>backend tests on the AI Command Center</span></div>
+        <div><b>1,000</b><span>Monte Carlo runs of the 48-team World Cup</span></div>
+      </div>
+    </div>
+
+    <!-- Selected work -->
+    <section id="work" aria-labelledby="work-h">
+      <div class="sec-head">
+        <h2 id="work-h">Selected work</h2>
+        <p class="sec-note">Newest first</p>
+      </div>
+
+      <article class="entry">
+        <div class="meta">
+          <span class="when">Oct 2026</span>
+          <span>Personal project</span>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Claude API</span></div>
+        </div>
+        <div class="body">
+          <h3>AI Personal Command Center</h3>
+          <p class="sub">Syncs Gmail, Google Calendar, Google Tasks and SUCourse, pulls out tasks with Claude, and answers “what’s due this week?”</p>
+          <ul>
+            <li>Syncs multiple Gmail accounts incrementally (via <code>historyId</code>), Calendar, Tasks and Moodle into PostgreSQL through OAuth 2.0 and scheduled background jobs.</li>
+            <li>LLM extraction with Claude Haiku 4.5 using forced tool calls and Pydantic-validated JSON: due dates, priorities, summaries, duplicate and completion detection.</li>
+            <li>SQL-first chat agent with typed, read-only query tools and a confirm-before-write flow, so the model can propose changes but never make them directly.</li>
+            <li>PII redaction before every LLM call, prompt caching, per-call cost logging and spending caps. About 800 emails processed for $2.22.</li>
+          </ul>
+          <div class="eval" role="group" aria-label="Evaluation results">
+            <p class="eval-title">Hand-labeled eval set · prompt v1 → v4</p>
+            <div class="metric">
+              <span>Actionable accuracy</span>
+              <div class="track" aria-hidden="true"><i class="before" style="width:82%"></i><i class="after" style="width:93%"></i></div>
+              <span class="val">82% → <b>93%</b></span>
+            </div>
+            <div class="metric">
+              <span>Due-time accuracy</span>
+              <div class="track" aria-hidden="true"><i class="before" style="width:50%"></i><i class="after" style="width:100%"></i></div>
+              <span class="val">50% → <b>100%</b></span>
+            </div>
+            <div class="legend" aria-hidden="true"><span class="l1">first prompt</span><span class="l2">fourth prompt</span></div>
+          </div>
+          <div class="links"><a href="https://github.com/AbdulMominAlam/ai-command-center" target="_blank" rel="noopener">Source on GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="meta">
+          <span class="when">Jul – Aug 2026</span>
+          <span>Built at Avanza Innovations</span>
+          <div class="tags"><span class="tag">OpenAI Responses API</span><span class="tag">RAG</span><span class="tag">MCP</span><span class="tag">FastAPI</span><span class="tag">RabbitMQ</span><span class="tag">Docker</span></div>
+        </div>
+        <div class="body">
+          <h3>AI Developer Support Agent</h3>
+          <p class="sub">A multi-service support agent that answers developer questions from docs, code and the database, with responses streamed in real time.</p>
+          <ul>
+            <li>Dedicated RAG service, a custom Developer Support MCP server, and a background worker that processes support tickets asynchronously over RabbitMQ.</li>
+            <li>Dynamic SQL Agent that turns natural-language questions into validated, read-only PostgreSQL queries and returns structured JSON.</li>
+            <li>GitHub MCP tools, persistent conversation memory in PostgreSQL, bearer-token auth, and WebSocket streaming to a React front end.</li>
+          </ul>
+          <div class="links"><a href="https://github.com/AbdulMominAlam/ai-developer-support-agent" target="_blank" rel="noopener">Source on GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="meta">
+          <span class="when">May 2026</span>
+          <span>Personal project</span>
+          <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Streamlit</span></div>
+        </div>
+        <div class="body">
+          <h3>FIFA World Cup 2026 Predictor</h3>
+          <p class="sub">Predicts win, draw and loss probabilities for any match, then simulates the whole 48-team tournament.</p>
+          <ul>
+            <li>Features built from Elo ratings, recent form, scoring and defensive records, and neutral-venue effects.</li>
+            <li>Random Forest trained on a chronological train/test split to avoid leakage: 56.63% accuracy on a three-outcome problem.</li>
+            <li>Full tournament logic with 12 groups, best third-place qualification and knockouts; 1,000 Monte Carlo runs give title and final odds per team.</li>
+          </ul>
+          <div class="links"><a href="https://github.com/AbdulMominAlam/Football-Predictor" target="_blank" rel="noopener">Source on GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="meta">
+          <span class="when">Dec 2025</span>
+          <span>Team project</span>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span><span class="tag">Firestore</span></div>
+        </div>
+        <div class="body">
+          <h3>SU Learning Companion</h3>
+          <p class="sub">A shared academic app for Sabancı students: courses, assignments, exams, notes, flashcards and a deadline calendar.</p>
+          <ul>
+            <li>Built the Notes feature with real-time Firestore updates and Provider-based state management.</li>
+            <li>Firebase Authentication with per-user data access.</li>
+          </ul>
+          <div class="links"><a href="https://github.com/AbdulMominAlam/SU-Learning-Companion" target="_blank" rel="noopener">Source on GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="meta">
+          <span class="when">May 2025</span>
+          <span>Data analysis</span>
+          <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Pandas</span></div>
+        </div>
+        <div class="body">
+          <h3>Economic Impact on R&amp;D Investment</h3>
+          <p class="sub">How macroeconomic indicators relate to R&amp;D spending across 10 countries.</p>
+          <ul>
+            <li>Assembled a 140-observation panel dataset and ran EDA, regression, Random Forest, XGBoost, kNN, PCA and K-Means clustering.</li>
+            <li>Random Forest gave the best fit, with an RMSE of 0.67.</li>
+          </ul>
+          <div class="links"><a href="https://github.com/AbdulMominAlam/rd-investment-economic-analysis" target="_blank" rel="noopener">Notebook on GitHub</a></div>
+        </div>
+      </article>
+
+      <div class="sec-head" style="margin-top: 24px;">
+        <h3 style="margin:0">Also on GitHub</h3>
+      </div>
+      <div class="mini">
+        <a href="https://github.com/AbdulMominAlam/fpga-uart-countdown-timer" target="_blank" rel="noopener">
+          <strong>fpga-uart-countdown-timer</strong>
+          <p>A countdown timer on a Tang Nano 9K FPGA, set and controlled over UART.</p>
+          <span class="lang">Verilog</span>
+        </a>
+        <a href="https://github.com/AbdulMominAlam/subset-sum-algorithm-analysis" target="_blank" rel="noopener">
+          <strong>subset-sum-algorithm-analysis</strong>
+          <p>Brute force against a greedy heuristic on the NP-complete Subset Sum problem, with complexity analysis and benchmarks.</p>
+          <span class="lang">Jupyter Notebook</span>
+        </a>
+        <a href="https://github.com/AbdulMominAlam/Supermarket-Management-System" target="_blank" rel="noopener">
+          <strong>Supermarket-Management-System</strong>
+          <p>Normalized relational schema with stored procedures, triggers and reporting queries for inventory.</p>
+          <span class="lang">MySQL · MongoDB</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" aria-labelledby="exp-h">
+      <div class="sec-head">
+        <h2 id="exp-h">Experience</h2>
+      </div>
+      <article class="entry">
+        <div class="meta">
+          <span class="when">Jul – Aug 2026</span>
+          <span>Karachi, Pakistan</span>
+        </div>
+        <div class="body">
+          <h3>AI Engineering Intern · Avanza Innovations</h3>
+          <ul>
+            <li>Built the full-stack AI Developer Support Agent above: OpenAI Responses API, RAG, FastAPI, React, MCP, PostgreSQL, RabbitMQ, WebSockets, Docker Compose.</li>
+            <li>Designed the multi-service architecture, including the RAG service, custom MCP server, ticket worker and real-time streaming.</li>
+            <li>Shipped a Dynamic SQL Agent for natural-language, read-only database questions.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="meta">
+          <span class="when">Aug 2025</span>
+          <span>Pakistan</span>
+        </div>
+        <div class="body">
+          <h3>IT &amp; Business Operations Intern · Hoechst Pakistan Limited</h3>
+          <ul>
+            <li>Queried and analyzed large-scale sales data in SQL to find performance trends and customer patterns.</li>
+            <li>Ran product-level demographic analysis for Depura and Selsun and turned it into business recommendations.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-h">
+      <div class="sec-head">
+        <h2 id="skills-h">Toolkit</h2>
+      </div>
+      <div class="skills">
+        <div>
+          <h4>Languages</h4>
+          <div class="tags"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">C++</span><span class="tag">SQL</span><span class="tag">Dart</span><span class="tag">Verilog</span></div>
+        </div>
+        <div>
+          <h4>AI &amp; machine learning</h4>
+          <div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">MCP</span><span class="tag">Claude API</span><span class="tag">OpenAI Responses API</span><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">Embeddings</span><span class="tag">OCR</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span></div>
+        </div>
+        <div>
+          <h4>Backend &amp; data</h4>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Neon</span><span class="tag">MySQL</span><span class="tag">Firebase</span><span class="tag">REST</span><span class="tag">WebSockets</span><span class="tag">RabbitMQ</span></div>
+        </div>
+        <div>
+          <h4>Frontend &amp; DevOps</h4>
+          <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Flutter</span><span class="tag">HTML/CSS</span><span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">Kubernetes basics</span></div>
+        </div>
+        <div>
+          <h4>Certifications</h4>
+          <p style="margin:0">Anthropic: Claude with the Anthropic API, MCP (Intro &amp; Advanced), Claude Code in Action, Agent Skills, Subagents. Udemy: The Complete Full-Stack Web Development Bootcamp.</p>
+        </div>
+        <div>
+          <h4>Spoken languages</h4>
+          <p style="margin:0">English, Urdu and Sindhi (fluent) · Turkish (elementary)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education + beyond -->
+    <section aria-label="Education and community">
+      <div class="pair">
+        <div>
+          <h2>Education</h2>
+          <div class="plain">
+            <div>
+              <div class="row"><h3>Sabancı University</h3><span>2023 – 2027</span></div>
+              <p>BSc Computer Science and Engineering, Minor in Business Analytics. 50% merit scholarship.</p>
+            </div>
+            <div>
+              <div class="row"><h3>Karachi Grammar School</h3><span>2023</span></div>
+              <p>Graduated as a school Prefect.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>Beyond code</h2>
+          <div class="plain">
+            <div>
+              <div class="row"><h3>Sadqah Gali · Co-Founder</h3><span>2021 – now</span></div>
+              <p>An NGO in Pakistan. I lead fundraising and outreach for water pipelines, hand pumps and tube wells, food distribution, and flood relief.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Let’s talk.</h2>
+      <p>I’m interested in AI engineering, backend and machine-learning roles. The quickest way to reach me is email.</p>
+      <div class="email" id="email">mominalam454@gmail.com</div>
+      <div class="cta">
+        <button class="btn primary" type="button" id="copy">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/abdulmominalam" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/AbdulMominAlam" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Abdul Momin Alam</span>
+    <span>Istanbul · Karachi</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var text = email.textContent.trim();
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, press ⌘C / Ctrl+C';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy email'; }, 2000);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+</body>
+</html>

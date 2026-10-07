@@ -1,0 +1,5 @@
+.DS_Store
+.vscode/
+.claude/
+# claude.ai artifact copy of the page (no <head>); index.html is the real site
+portfolio.html
