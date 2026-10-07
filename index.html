@@ -137,19 +137,20 @@ h1 {
 .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
 .btn svg { width: 16px; height: 16px; fill: currentColor; }
 
-/* Readout strip: measured figures from the work */
+/* At-a-glance panel */
 .readout {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--fg); border-bottom: 1px solid var(--line);
   margin-top: clamp(40px, 7vw, 72px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 20px 50px -36px color-mix(in srgb, var(--accent) 60%, transparent);
 }
-.readout div { padding: 18px 18px 18px 0; display: grid; gap: 4px; align-content: start; }
-.readout div + div { padding-left: 18px; border-left: 1px solid var(--line); }
-.readout b { font-family: var(--f-display); font-stretch: 112%; font-weight: 700; font-size: var(--step-3); line-height: 1; color: var(--accent-2); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-.readout span { font-size: var(--step--1); color: var(--muted); line-height: 1.4; }
+.readout div { padding: clamp(20px, 3vw, 30px); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.readout div + div { border-left: 1px solid var(--line); }
+.readout b { font-family: var(--f-display); font-stretch: 112%; font-weight: 700; font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); line-height: 1; color: var(--accent-2); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.readout span { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 @media (max-width: 760px) {
   .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .readout div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .readout div:nth-child(3) { border-left: 0; }
   .readout div:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
 
@@ -285,11 +286,11 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
       </figure>
       </div>
 
-      <div class="readout" aria-label="Measured results from my projects">
-        <div><b>82→93%</b><span>task-extraction accuracy after four prompt iterations</span></div>
-        <div><b>$0.004</b><span>LLM cost per email across ~800 processed</span></div>
-        <div><b>223</b><span>backend tests on the AI Command Center</span></div>
-        <div><b>1,000</b><span>Monte Carlo runs of the 48-team World Cup</span></div>
+      <div class="readout" aria-label="At a glance">
+        <div><b>2027</b><span>Expected graduation</span></div>
+        <div><b>2</b><span>Internships</span></div>
+        <div><b>50%</b><span>Merit scholarship</span></div>
+        <div><b>7</b><span>Certifications</span></div>
       </div>
     </div>
 
@@ -314,6 +315,7 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
             <li>LLM extraction with Claude Haiku 4.5 using forced tool calls and Pydantic-validated JSON: due dates, priorities, summaries, duplicate and completion detection.</li>
             <li>SQL-first chat agent with typed, read-only query tools and a confirm-before-write flow, so the model can propose changes but never make them directly.</li>
             <li>PII redaction before every LLM call, prompt caching, per-call cost logging and spending caps. About 800 emails processed for $2.22.</li>
+            <li>Backed by 223 backend tests.</li>
           </ul>
           <div class="eval" role="group" aria-label="Evaluation results">
             <p class="eval-title">Hand-labeled eval set · prompt v1 → v4</p>
