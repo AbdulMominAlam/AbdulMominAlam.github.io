@@ -77,20 +77,54 @@ a:hover { text-decoration-thickness: 2px; }
 @media (max-width: 560px) { .top nav a.opt { display: none; } }
 
 /* Hero */
-.hero { padding-block: clamp(48px, 9vw, 104px) clamp(36px, 6vw, 64px); }
-.eyebrow {
-  font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: 0.04em;
-  color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 22px;
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(36px, 6vw, 64px); }
+.intro {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(32px, 6vw, 80px); align-items: center;
 }
-.eyebrow span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent-2); margin-right: 8px; vertical-align: 2px; }
+.intro-text { min-width: 0; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 24px;
+  padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); font-size: var(--step--1); color: var(--muted);
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 22%, transparent); }
+.status b { color: var(--fg); font-weight: 600; }
+.hello { font-family: var(--f-mono); font-size: var(--step-0); color: var(--accent); margin: 0 0 10px; }
 h1 {
   font-family: var(--f-display); font-stretch: 125%; font-weight: 800;
-  font-size: var(--step-5); line-height: 0.95; letter-spacing: -0.035em;
-  margin: 0 0 28px; text-wrap: balance;
+  font-size: clamp(2.5rem, 1.4rem + 4.4vw, 4.5rem); line-height: 1; letter-spacing: -0.035em;
+  margin: 0 0 16px; text-wrap: balance;
 }
-h1 .soft { color: var(--accent); }
-.lede { font-size: var(--step-1); max-width: 40rem; margin: 0 0 32px; color: var(--fg); }
-.lede em { font-style: normal; color: var(--muted); }
+.role {
+  font-family: var(--f-display); font-stretch: 112%; font-weight: 600;
+  font-size: var(--step-2); line-height: 1.3; letter-spacing: -0.01em;
+  color: var(--muted); margin: 0 0 22px; text-wrap: balance;
+}
+.role strong { color: var(--fg); font-weight: 700; }
+.lede { font-size: 1.0625rem; max-width: 36rem; margin: 0 0 30px; color: var(--muted); }
+.lede strong { color: var(--fg); font-weight: 500; }
+
+.portrait { position: relative; width: clamp(220px, 26vw, 340px); margin: 0; }
+.portrait .ring {
+  position: absolute; inset: -14px; border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.portrait .photo {
+  position: relative; aspect-ratio: 1; max-width: 100%; border-radius: 50%; overflow: hidden;
+  background: var(--line); box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.035); }
+.portrait figcaption {
+  position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%);
+  white-space: nowrap; font-family: var(--f-mono); font-size: 0.75rem;
+  background: var(--fg); color: var(--bg); padding: 6px 12px; border-radius: 999px;
+}
+@media (max-width: 760px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .portrait { order: -1; width: 168px; margin-left: 14px; margin-top: 14px; }
+  .portrait figcaption { display: none; }
+}
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -225,9 +259,13 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
 <main id="top">
   <div class="wrap">
     <div class="hero">
-      <p class="eyebrow"><span>CS &amp; Engineering, Sabancı University</span><span>Minor in Business Analytics</span><span>Istanbul, Türkiye</span></p>
-      <h1>Abdul Momin <span class="soft">Alam</span></h1>
-      <p class="lede">I build AI software and the backends behind it: LLM pipelines with evaluation sets, cost limits and read-only guardrails, agents that talk to real databases, and machine-learning models I can test against real data. <em>Class of 2027.</em></p>
+      <div class="intro">
+      <div class="intro-text">
+      <p class="status"><i aria-hidden="true"></i><span><b>Final-year CS student</b> · Sabancı University</span></p>
+      <p class="hello">Hi, I’m</p>
+      <h1>Abdul Momin Alam</h1>
+      <p class="role">I build <strong>AI systems</strong> and the <strong>backends</strong> that run them.</p>
+      <p class="lede">Computer Science &amp; Engineering student in Istanbul with a minor in Business Analytics. This summer I was an <strong>AI Engineering Intern at Avanza Innovations</strong>, building a multi-service support agent with RAG, MCP and a natural-language SQL agent. I care about AI that is measured: eval sets, cost limits and read-only guardrails.</p>
       <div class="cta">
         <a class="btn primary" href="#work">See my work</a>
         <a class="btn" href="https://github.com/AbdulMominAlam" target="_blank" rel="noopener">
@@ -238,6 +276,13 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.542v7.22H4.94zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.01-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.21V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
           LinkedIn
         </a>
+      </div>
+      </div>
+      <figure class="portrait">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="photo"><img src="assets/momin.jpg" alt="Portrait of Abdul Momin Alam" width="800" height="800"></div>
+        <figcaption>Istanbul · Karachi</figcaption>
+      </figure>
       </div>
 
       <div class="readout" aria-label="Measured results from my projects">
