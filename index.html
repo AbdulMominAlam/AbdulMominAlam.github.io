@@ -4,7 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Abdul Momin Alam</title>
-<meta name="description" content="Abdul Momin Alam — Computer Science & Engineering student at Sabancı University building AI systems, backends and machine-learning projects.">
+<meta name="description" content="Abdul Momin Alam — Computer Science & Engineering student at Sabancı University and former AI Engineering Intern at Avanza Innovations, building measured AI systems, backends and machine-learning projects.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abdul Momin Alam">
+<meta property="og:description" content="Abdul Momin Alam — Computer Science & Engineering student at Sabancı University and former AI Engineering Intern at Avanza Innovations, building measured AI systems, backends and machine-learning projects.">
+<meta property="og:url" content="https://abdulmominalam.github.io">
+<meta property="og:image" content="https://abdulmominalam.github.io/assets/momin.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Abdul Momin Alam">
+<meta name="twitter:description" content="Abdul Momin Alam — Computer Science & Engineering student at Sabancı University and former AI Engineering Intern at Avanza Innovations, building measured AI systems, backends and machine-learning projects.">
+<meta name="twitter:image" content="https://abdulmominalam.github.io/assets/momin.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -321,7 +330,7 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
     <section id="work" aria-labelledby="work-h">
       <div class="sec-head">
         <h2 id="work-h">Selected work</h2>
-        <p class="sec-note">Newest first</p>
+        <p class="sec-note">Selected projects</p>
       </div>
 
       <article class="entry">
@@ -378,6 +387,25 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
 
       <article class="entry">
         <div class="meta">
+          <span class="when">Oct 2026</span>
+          <span>Personal project</span>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Vite</span><span class="tag">Transformers.js</span><span class="tag">Web Workers</span><span class="tag">Vercel</span></div>
+        </div>
+        <div class="body">
+          <h3>Proverbial</h3>
+          <p class="sub">A daily puzzle game: read a proverb translated word for word into English, guess what it means, then guess where it comes from on a world map.</p>
+          <ul>
+            <li>Meaning guesses are judged by a small AI model running in the browser: MiniLM sentence embeddings via Transformers.js, inside a Web Worker so the UI stays responsive.</li>
+            <li>Second round places the proverb’s country on an interactive world map.</li>
+            <li>Shareable, spoiler-free results and daily streaks.</li>
+            <li>No backend: everything runs client-side, so guesses never leave the device. Deployed on Vercel.</li>
+          </ul>
+          <div class="links"><a href="https://playproverbial.com" target="_blank" rel="noopener">Play it live</a><a href="https://github.com/AbdulMominAlam/proverb-game" target="_blank" rel="noopener">Source on GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="meta">
           <span class="when">May 2026</span>
           <span>Personal project</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Streamlit</span></div>
@@ -390,7 +418,7 @@ footer .wrap { padding-block: 20px; border-top: 1px solid color-mix(in srgb, var
             <li>Random Forest trained on a chronological train/test split to avoid leakage: 56.63% accuracy on a three-outcome problem.</li>
             <li>Full tournament logic with 12 groups, best third-place qualification and knockouts; 1,000 Monte Carlo runs give title and final odds per team.</li>
           </ul>
-          <div class="links"><a href="https://github.com/AbdulMominAlam/Football-Predictor" target="_blank" rel="noopener">Source on GitHub</a></div>
+          <div class="links"><a href="https://football-predictor-kr9foj8794qjm2vlplmf4h.streamlit.app/" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/AbdulMominAlam/Football-Predictor" target="_blank" rel="noopener">Source on GitHub</a></div>
         </div>
       </article>
 
